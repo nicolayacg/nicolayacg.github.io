@@ -4,33 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Mundo</title>
+    <title>Papa Pastusa</title>
+    <style>
+        :root {
+            --bg: #f9fafb;
+            --card: #ffffff;
+            --primary: #2563eb;
+            --text: #1f2937;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+        }
+
+        input[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hola Mundo</h1>
-    <form>
-        <!-- Campo de texto -->
-        <label for="cancion">Canción:</label>
-        <input type="text" id="cancion" name="cancion">
-        <br><br>
 
-        <!-- Radio buttons (Selección única) -->
-        <p>¿Es en oferta?</p>
-        <input type="radio" id="oferta_si" name="oferta" value="si">
-        <label for="oferta_si">Sí</label>
+    <div class="container">
+        <h1>Compra de Papa Pastusa</h1>
+        <form action="procesar.php" method="post">
+            <input type="number" name="cantidad" placeholder="Cantidad (kg)" required>
+            <input type="number" name="precio" placeholder="Precio por unidad" required>
+            <input type="submit" value="Enviar pedido">
+        </form>
+    </div>
 
-        <input type="radio" id="oferta_no" name="oferta" value="no">
-        <label for="oferta_no">No</label>
-        <br><br>
-
-        <!-- Checkbox (Selección múltiple/individual) -->
-        <input type="checkbox" id="terminos" name="terminos">
-        <label for="terminos">Acepto los términos</label>
-        <br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
 </body>
 
 </html>
