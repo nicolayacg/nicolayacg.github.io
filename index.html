@@ -4,73 +4,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papa Pastusa</title>
+    <title>Hotel Natura & Huellas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f9fafb;
-            --card: #ffffff;
-            --primary: #2563eb;
-            --text: #1f2937;
+            --primary: #4a7c59;
+            --secondary: #8fc0a9;
+            --accent: #faf3dd;
+            --text: #2f3e46;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            background: #c8d5b9;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
             padding: 20px;
+            color: var(--text);
         }
 
         .container {
-            background: var(--card);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
             width: 100%;
-            max-width: 400px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         h1 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
+            color: var(--primary);
+            margin: 0;
+            font-size: 24px;
+        }
+
+        p.subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
             font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary);
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        input {
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: 100%;
             padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-sizing: border-box;
         }
 
         input:focus {
-            border-color: var(--primary);
+            border-color: var(--secondary);
+            outline: none;
+            background: #f9fffb;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .room-selector {
+            display: flex;
+            justify-content: space-between;
+            background: var(--accent);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .room-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
         }
 
         input[type="submit"] {
-            background-color: var(--primary);
+            width: 100%;
+            background: var(--primary);
             color: white;
             border: none;
-            font-weight: 600;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            margin-top: 8px;
+            transition: 0.3s;
+            margin-top: 25px;
         }
 
         input[type="submit"]:hover {
-            background-color: #1d4ed8;
+            background: #3a6347;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 124, 89, 0.3);
         }
     </style>
 </head>
@@ -78,11 +124,64 @@
 <body>
 
     <div class="container">
-        <h1>Compra de Papa Pastusa</h1>
-        <form action="procesar.php" method="post">
-            <input type="number" name="cantidad" placeholder="Cantidad (kg)" required>
-            <input type="number" name="precio" placeholder="Precio por unidad" required>
-            <input type="submit" value="Enviar pedido">
+        <header>
+            <span>🐾</span>
+            <h1>Hotel Natura & Huellas</h1>
+            <p class="subtitle">Bienvenido al refugio donde tú y tu mascota son uno solo.</p>
+        </header>
+
+        <form method="post" action="proceso.php">
+            <div class="grid">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Documento</label>
+                    <input type="text" name="documento" placeholder="ID" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label>Celular</label>
+                    <input type="number" name="celular" placeholder="300..." required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="correo@ejemplo.com" required>
+                </div>
+            </div>
+
+            <div class="grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="form-group">
+                    <label>Adultos</label>
+                    <input type="number" name="adultos" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Niños</label>
+                    <input type="number" name="niños" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Mascotas 🐕</label>
+                    <input type="number" name="mascotas" value="0" min="0">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Noches de estadía</label>
+                <input type="number" name="noches" min="1" placeholder="¿Cuántas noches?" required>
+            </div>
+
+            <label>Tipo de Habitación Premium</label>
+            <div class="room-selector">
+                <label class="room-option"><input type="radio" name="habitacion" value="normal" checked>
+                    Estándar</label>
+                <label class="room-option"><input type="radio" name="habitacion" value="doble"> Doble</label>
+                <label class="room-option"><input type="radio" name="habitacion" value="vip"> VIP Suite</label>
+            </div>
+
+            <input type="submit" value="Confirmar Reserva Animalista">
         </form>
     </div>
 
